@@ -1,0 +1,15 @@
+name = "cloudflare-vite-tutorial"
+compatibility_date = "2025-04-03"
+
+# The entry point for the Worker, can be set to your compiled output from Vite (e.g. index.js)
+main = "src/index.ts"
+
+# For static assets (like images, CSS, JS), set up asset routing with SPA behavior
+assets = [
+  { base_path = "dist", path = "**/*.js", mime_type = "application/javascript" },
+  { base_path = "dist", path = "**/*.css", mime_type = "text/css" },
+  { base_path = "dist", path = "**/*.html", mime_type = "text/html" }
+]
+
+# Tell Cloudflare Workers to handle "not found" requests by serving the index.html for SPA
+assets.not_found_handling = "single-page-application"
